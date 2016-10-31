@@ -8,9 +8,9 @@ import kaffee.entities.UniqueEntity;
  * @author ahorvath
  * @param <T> .
  */
-public interface UniqueEntityDao<T extends UniqueEntity> extends EntityDao<T> {
+public interface UniqueEntityDao<T extends UniqueEntity<? extends Number>> extends EntityDao<T> {
 
-	T getBySid(String sid);
+	T selectBySid(String sid);
 
-	List<T> getBySids(List<String> sids);
+	List<T> selectBySids(List<String> sids);
 }

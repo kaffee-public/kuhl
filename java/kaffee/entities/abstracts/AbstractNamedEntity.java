@@ -6,10 +6,10 @@ import kaffee.entities.NamedEntity;
 /**
  * .
  * @author ahorvath
- * @param <T>
+ * @param <K>
  */
-public class AbstractNamedEntity<T extends AbstractNamedEntity> extends AbstractUniqueEntity<T>
-	implements NamedEntity {
+public class AbstractNamedEntity<K extends Number> extends AbstractUniqueEntity<K>
+	   implements NamedEntity<K> {
 
 	@Column(name = "name")
 	private String name;

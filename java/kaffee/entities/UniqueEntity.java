@@ -1,6 +1,11 @@
 package kaffee.entities;
 
-public interface UniqueEntity extends Entity {
+/**
+ * .
+ * @author ahorvath
+ * @param <K> .
+ */
+public interface UniqueEntity<K> extends Entity<K> {
 
 	String getSid();
 

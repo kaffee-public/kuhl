@@ -1,10 +1,15 @@
 package kaffee.entities;
 
-public interface Entity {
+/**
+ * .
+ * @author ahorvath
+ * @param <K> Primary-key type.
+ */
+public interface Entity<K> extends Comparable<K> {
 
-	Long getId();
+	K getId();
 
-	void setId(Long id);
+	void setId(K id);
 
 	String getInfo();
 

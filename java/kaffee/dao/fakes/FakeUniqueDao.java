@@ -12,17 +12,17 @@ import kaffee.entities.UniqueEntity;
  * @author ahorvath
  * @param <T>
  */
-public class FakeUniqueDao<T extends UniqueEntity> extends FakeEntityDao<T> implements UniqueEntityDao<T> {
+public class FakeUniqueDao<T extends UniqueEntity<? extends Number>> extends FakeEntityDao<T> implements UniqueEntityDao<T> {
 
-	private final Map<String, T> dataBySid = new TreeMap<String, T>();
+	private final Map<String, T> dataBySid = new TreeMap<>();
 
 	@Override
-	public T getBySid(String sid) {
+	public T selectBySid(String sid) {
 		return dataBySid.get(sid);
 	}
 
 	@Override
-	public List<T> getBySids(List<String> sids) {
+	public List<T> selectBySids(List<String> sids) {
 		List<T> ret = new ArrayList<>();
 		for (String sid : sids) {
 			ret.add(dataBySid.get(sid));

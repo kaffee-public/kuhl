@@ -9,24 +9,25 @@ import kaffee.dao.abstracts.AbstractEntityDao;
 import kaffee.entities.Entity;
 
 /**
+ * Use this class for testing purposes only (ie. Unit-tests).
  *
  * @author ahorvath
  * @param <T>
  */
-public class FakeEntityDao<T extends Entity> extends AbstractEntityDao<T> {
+public class FakeEntityDao<T extends Entity<? extends Number>> extends AbstractEntityDao<T> {
 
-	private static long counter = 0;
-	private final Map<Long, T> data = new TreeMap<Long, T>();
+	private static int counter = 0;
+	private final Map<Number, T> data = new TreeMap<>();
 
 	@Override
-	public T getById(long id) {
+	public T selectById(Number id) {
 		return data.get(id);
 	}
 
 	@Override
-	public List<T> getByIds(List<Long> ids) {
+	public List<T> selectByIds(List<? extends Number> ids) {
 		List<T> ret = new ArrayList<>(ids.size());
-		for (Long id : ids) {
+		for (Number id : ids) {
 			ret.add(data.get(id));
 		}
 		return ret;
@@ -35,7 +36,7 @@ public class FakeEntityDao<T extends Entity> extends AbstractEntityDao<T> {
 	@Override
 	public T persist(T e) {
 		if (e.getId() == null) {
-			e.setId(++counter);
+			e.setId(new Integer(++counter));
 		}
 		return data.put(counter, e);
 	}
@@ -53,7 +54,7 @@ public class FakeEntityDao<T extends Entity> extends AbstractEntityDao<T> {
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(Number id) {
 		data.remove(id);
 	}
 }

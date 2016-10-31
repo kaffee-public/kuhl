@@ -5,8 +5,8 @@ import kaffee.entities.NamedEntity;
 
 /**
  *
- * @author Adam
+ * @author ahorvath
  */
-public abstract class AbstractNamedDao<T extends NamedEntity> extends AbstractUniqueDao<T> implements NamedEntityDao<T> {
+public abstract class AbstractNamedDao<T extends NamedEntity<? extends Number>> extends AbstractUniqueDao<T> implements NamedEntityDao<T> {
 
 }

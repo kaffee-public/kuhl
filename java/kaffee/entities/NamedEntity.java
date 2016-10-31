@@ -1,6 +1,6 @@
 package kaffee.entities;
 
-public interface NamedEntity extends UniqueEntity {
+public interface NamedEntity<K> extends UniqueEntity<K> {
 
 	String getName();
 

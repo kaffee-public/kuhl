@@ -6,11 +6,11 @@ import kaffee.entities.UniqueEntity;
 /**
  * .
  * @author ahorvath
- * @param <T>
+ * @param <K>
  */
-public class AbstractUniqueEntity<T extends AbstractUniqueEntity> extends AbstractEntity<T> implements UniqueEntity {
+public class AbstractUniqueEntity<K extends Number> extends AbstractEntity<K> implements UniqueEntity<K> {
 
-	@Column(name = "sid", nullable = false)
+	@Column(name = "sid", nullable = false, unique = true)
 	private String sid;
 
 	@Override

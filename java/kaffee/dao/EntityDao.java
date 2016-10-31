@@ -9,11 +9,11 @@ import kaffee.entities.Entity;
  * @author ahorvath
  * @param <T>
  */
-public interface EntityDao<T extends Entity> {
+public interface EntityDao<T extends Entity<? extends Number>> {
 
-	T getById(long id);
+	T selectById(Number id);
 
-	List<T> getByIds(List<Long> ids);
+	List<T> selectByIds(List<? extends Number> ids);
 
 	T persist(T e);
 
@@ -21,5 +21,5 @@ public interface EntityDao<T extends Entity> {
 
 	void delete(T e);
 
-	void deleteById(Long id);
+	void deleteById(Number id);
 }
